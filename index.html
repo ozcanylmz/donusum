@@ -96,7 +96,7 @@ svg text{fill:var(--muted);font-size:10px}
    VERİ: Program içeriği
    ========================================================= */
 const DAYS = {
-  A:{name:'Alt-1',sub:'Squat ağırlıklı',cardio:'25–35 dk eğimli yürüyüş (Zone 2)',ex:[
+  A:{name:'Alt-1',gun:'Pazartesi',kisa:'Pzt',sub:'Squat ağırlıklı',cardio:'25–35 dk eğimli yürüyüş (Zone 2)',ex:[
     {id:'a1',n:'Goblet squat',alt:'4. haftadan sonra hack squat veya barbell squat',s:[3,4],r:[6,10],rest:'2–2,5 dk',step:2.5,note:'Ana hareket. Göğüs dik, diz ayak ucu yönünde.'},
     {id:'a2',n:'Romanian deadlift',s:[3,3],r:[8,10],rest:'2 dk',step:5,note:'Bel düz, kalçayı geriye it; arka bacakta gerilmeyi hisset.'},
     {id:'a3',n:'Leg press',s:[3,3],r:[10,15],rest:'90 sn',step:10,note:'Ayaklar omuz genişliğinde; dizleri kilitleme.'},
@@ -105,7 +105,7 @@ const DAYS = {
     {id:'a6',n:'Ayakta calf raise',s:[3,3],r:[12,15],rest:'60 sn',step:5},
     {id:'a7',n:'Dead bug + Pallof press',s:[3,3],r:[8,12],rest:'60 sn',step:0,bw:true,note:'Core; beli korur. Her taraf 8–12.'}
   ]},
-  B:{name:'Üst-1',sub:'Göğüs ve sırt',cardio:'20–30 dk kürek veya bisiklet (Zone 2)',ex:[
+  B:{name:'Üst-1',gun:'Salı',kisa:'Salı',sub:'Göğüs ve sırt',cardio:'20–30 dk kürek veya bisiklet (Zone 2)',ex:[
     {id:'b1',n:'Bench press (DB veya barbell)',s:[3,4],r:[6,10],rest:'2 dk',step:2.5,note:'Kürek kemikleri geride, ayaklar yerde.'},
     {id:'b2',n:'Göğüs destekli row',s:[3,4],r:[8,12],rest:'90 sn',step:2.5,note:'Dirsekleri geriye çek, sırtı sık.'},
     {id:'b3',n:'Incline dumbbell press',s:[3,3],r:[8,12],rest:'90 sn',step:2},
@@ -114,7 +114,7 @@ const DAYS = {
     {id:'b6',n:'Face pull',s:[2,3],r:[15,20],rest:'60 sn',step:2.5},
     {id:'b7',n:'Triceps pushdown + biceps curl',s:[2,3],r:[10,15],rest:'60 sn',step:2.5,note:'Art arda (süperset).'}
   ]},
-  C:{name:'Alt-2',sub:'Kalça ve arka bacak',cardio:'25–35 dk eğimli yürüyüş (Zone 2)',ex:[
+  C:{name:'Alt-2',gun:'Perşembe',kisa:'Perş',sub:'Kalça ve arka bacak',cardio:'25–35 dk eğimli yürüyüş (Zone 2)',ex:[
     {id:'c1',n:'Hip thrust',s:[3,4],r:[8,12],rest:'2 dk',step:5,note:'Üstte 1 sn kalçayı sık; çene hafif içeride.'},
     {id:'c2',n:'Bulgarian split squat',s:[3,3],r:[8,10],rest:'90 sn',step:2,note:'Her bacak 8–10.'},
     {id:'c3',n:'Hack squat / leg press (ayaklar yukarıda)',s:[3,3],r:[10,12],rest:'90 sn',step:10},
@@ -123,7 +123,7 @@ const DAYS = {
     {id:'c6',n:'Back extension',s:[2,2],r:[12,15],rest:'60 sn',step:2.5,note:'Ağırlıksız başla.'},
     {id:'c7',n:"Farmer's walk",s:[3,3],r:[30,40],rest:'90 sn',step:2,unit:'m',note:'Ağır dumbbell ile 30–40 m yürü; dik dur.'}
   ]},
-  D:{name:'Üst-2',sub:'Omuz ve kanat',cardio:'Hafta 1–4: Zone 2 20–30 dk · 5. haftadan: aralıklı (kürek/bisiklet 30 sn sert / 90 sn hafif × 6–8)',ex:[
+  D:{name:'Üst-2',gun:'Cuma',kisa:'Cuma',sub:'Omuz ve kanat',cardio:'Hafta 1–4: Zone 2 20–30 dk · 5. haftadan: aralıklı (kürek/bisiklet 30 sn sert / 90 sn hafif × 6–8)',ex:[
     {id:'d1',n:'Oturarak DB shoulder press',s:[3,4],r:[6,10],rest:'2 dk',step:2},
     {id:'d2',n:'Destekli barfiks / geniş lat pulldown',s:[3,4],r:[6,10],rest:'2 dk',step:2.5,note:'Kanat genişliği için ana hareket.'},
     {id:'d3',n:'Makine chest press veya şınav',s:[3,3],r:[10,12],rest:'90 sn',step:2.5},
@@ -275,8 +275,8 @@ function vAntrenman(){
       <div class="set small muted"><span></span><span>${ex.bw?'':'kg'}</span><span>${unit}</span></div>${rows}</div></div>`;
   }).join('');
   return `<h1>Antrenman</h1><p class="sub">${ph.name} evresi · ${ph.rir}</p>
-  <div class="seg">${Object.entries(DAYS).map(([k,v])=>`<button class="${WDAY===k?'on':''}" onclick="WDAY='${k}';OPEN=null;render()">${v.name}</button>`).join('')}</div>
-  <div class="card"><h2>${D.name} · ${D.sub}</h2><p class="small muted">${ph.desc}</p>
+  <div class="seg">${Object.entries(DAYS).map(([k,v])=>`<button class="${WDAY===k?'on':''}" onclick="WDAY='${k}';OPEN=null;render()"><span style="display:block;font-size:12px;opacity:.8">${v.kisa}</span>${v.name}</button>`).join('')}</div>
+  <div class="card"><h2>${D.gun} · ${D.name}</h2><p class="small muted" style="margin-top:-4px">${D.sub}</p><p class="small muted">${ph.desc}</p>
   <details style="padding:0;background:none;margin:6px 0 0"><summary class="small" style="padding:6px 0">Isınma (10 dk, atlama)</summary><div><ul class="small">${WARMUP.map(x=>`<li>${x}</li>`).join('')}</ul></div></details></div>
   ${exHtml}
   <div class="card"><h2>Kardiyo</h2><p class="small muted">${D.cardio}${ph.k!=='yukleme'?' · Bu evrede aralıklı yok, sadece Zone 2.':''}</p>
@@ -304,7 +304,7 @@ function finish(){
 function historyHtml(){
   const h=S.sessions.slice(-8).reverse(); if(!h.length) return '';
   return `<h3>Son antrenmanlar</h3><div class="card"><table class="tbl">${h.map(s=>{ const tot=Object.values(s.sets).reduce((a,b)=>a+b.length,0);
-    return `<tr><td>${fmtD(s.date)}</td><td>${DAYS[s.day]?.name||s.day}</td><td class="muted">${tot} set${s.cardio?' · '+esc(s.cardio):''}</td></tr>`; }).join('')}</table></div>`;
+    return `<tr><td>${fmtD(s.date)}</td><td>${DAYS[s.day]?(DAYS[s.day].kisa+' · '+DAYS[s.day].name):s.day}</td><td class="muted">${tot} set${s.cardio?' · '+esc(s.cardio):''}</td></tr>`; }).join('')}</table></div>`;
 }
 
 /* ---------- TAKİP ---------- */
