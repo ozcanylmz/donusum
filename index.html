@@ -97,13 +97,12 @@ svg text{fill:var(--muted);font-size:10px}
    ========================================================= */
 const DAYS = {
   A:{name:'Alt-1',gun:'Pazartesi',kisa:'Pzt',sub:'Squat ağırlıklı',cardio:'25–35 dk eğimli yürüyüş (Zone 2)',ex:[
-    {id:'a1',n:'Goblet squat',alt:'4. haftadan sonra hack squat veya barbell squat',s:[3,4],r:[6,10],rest:'2–2,5 dk',step:2.5,note:'Ana hareket. Göğüs dik, diz ayak ucu yönünde.'},
+    {id:'a1',n:'Goblet squat',alt:'4. haftadan sonra hack squat veya barbell squat',s:[3,3],r:[6,10],rest:'2–2,5 dk',step:2.5,note:'Ana hareket. Göğüs dik, diz ayak ucu yönünde.'},
     {id:'a2',n:'Romanian deadlift',s:[3,3],r:[8,10],rest:'2 dk',step:5,note:'Bel düz, kalçayı geriye it; arka bacakta gerilmeyi hisset.'},
-    {id:'a3',n:'Leg press',s:[3,3],r:[10,15],rest:'90 sn',step:10,note:'Ayaklar omuz genişliğinde; dizleri kilitleme.'},
-    {id:'a4',n:'Yürüyerek lunge',s:[2,3],r:[10,10],rest:'90 sn',step:2.5,note:'Her bacak için 10 adım.'},
-    {id:'a5',n:'Lying leg curl',s:[3,3],r:[10,15],rest:'60 sn',step:2.5},
-    {id:'a6',n:'Ayakta calf raise',s:[3,3],r:[12,15],rest:'60 sn',step:5},
-    {id:'a7',n:'Dead bug + Pallof press',s:[3,3],r:[8,12],rest:'60 sn',step:0,bw:true,note:'Core; beli korur. Her taraf 8–12.'}
+    {id:'a3',n:'Leg press',s:[2,2],r:[10,15],rest:'90 sn',step:10,note:'Ayaklar omuz genişliğinde; dizleri kilitleme.'},
+    {id:'a5',n:'Lying leg curl',s:[2,2],r:[10,15],rest:'60 sn',step:2.5},
+    {id:'a6',n:'Ayakta calf raise',s:[2,2],r:[12,15],rest:'60 sn',step:5},
+    {id:'a7',n:'Dead bug + Pallof press',s:[2,2],r:[8,12],rest:'60 sn',step:0,bw:true,note:'Core; beli korur. Her taraf 8–12.'}
   ]},
   B:{name:'Üst-1',gun:'Salı',kisa:'Salı',sub:'Göğüs ve sırt',cardio:'20–30 dk kürek veya bisiklet (Zone 2)',ex:[
     {id:'b1',n:'Bench press (DB veya barbell)',s:[3,4],r:[6,10],rest:'2 dk',step:2.5,note:'Kürek kemikleri geride, ayaklar yerde.'},
@@ -115,13 +114,11 @@ const DAYS = {
     {id:'b7',n:'Triceps pushdown + biceps curl',s:[2,3],r:[10,15],rest:'60 sn',step:2.5,note:'Art arda (süperset).'}
   ]},
   C:{name:'Alt-2',gun:'Perşembe',kisa:'Perş',sub:'Kalça ve arka bacak',cardio:'25–35 dk eğimli yürüyüş (Zone 2)',ex:[
-    {id:'c1',n:'Hip thrust',s:[3,4],r:[8,12],rest:'2 dk',step:5,note:'Üstte 1 sn kalçayı sık; çene hafif içeride.'},
-    {id:'c2',n:'Bulgarian split squat',s:[3,3],r:[8,10],rest:'90 sn',step:2,note:'Her bacak 8–10.'},
-    {id:'c3',n:'Hack squat / leg press (ayaklar yukarıda)',s:[3,3],r:[10,12],rest:'90 sn',step:10},
-    {id:'c4',n:'Seated leg curl',s:[3,3],r:[10,15],rest:'60 sn',step:2.5},
+    {id:'c1',n:'Hip thrust',s:[3,3],r:[8,12],rest:'2 dk',step:5,note:'Üstte 1 sn kalçayı sık; çene hafif içeride.'},
+    {id:'c2',n:'Bulgarian split squat',s:[2,2],r:[8,10],rest:'90 sn',step:2,note:'Her bacak 8–10.'},
+    {id:'c4',n:'Seated leg curl',s:[2,2],r:[10,15],rest:'60 sn',step:2.5},
     {id:'c5',n:'Leg extension',s:[2,2],r:[12,15],rest:'60 sn',step:2.5},
-    {id:'c6',n:'Back extension',s:[2,2],r:[12,15],rest:'60 sn',step:2.5,note:'Ağırlıksız başla.'},
-    {id:'c7',n:"Farmer's walk",s:[3,3],r:[30,40],rest:'90 sn',step:2,unit:'m',note:'Ağır dumbbell ile 30–40 m yürü; dik dur.'}
+    {id:'c7',n:"Farmer's walk",s:[2,2],r:[30,40],rest:'90 sn',step:2,unit:'m',note:'Ağır dumbbell ile 30–40 m yürü; dik dur.'}
   ]},
   D:{name:'Üst-2',gun:'Cuma',kisa:'Cuma',sub:'Omuz ve kanat',cardio:'Hafta 1–4: Zone 2 20–30 dk · 5. haftadan: aralıklı (kürek/bisiklet 30 sn sert / 90 sn hafif × 6–8)',ex:[
     {id:'d1',n:'Oturarak DB shoulder press',s:[3,4],r:[6,10],rest:'2 dk',step:2},
@@ -440,7 +437,7 @@ function vRehber(){
     <table class="tbl"><tr><th>Tarih</th><th>Kilo</th><th>Bel</th></tr><tr><td>Ocak sonu</td><td>~89</td><td>~100</td></tr><tr><td>Mart sonu</td><td>~86</td><td>~97</td></tr><tr><td>Mayıs sonu</td><td>~83</td><td>~94</td></tr><tr><td>Temmuz</td><td>~80</td><td>~92</td></tr></table>
     <p class="small muted">Asıl ölçü bel/boy oranı: hedef 0,50'nin altı. Kilo durup bel inceliyorsa yağ gidiyor, kas geliyor demektir.</p></div></details>
   <details><summary>Antrenmanın mantığı</summary><div><ul>
-    <li><b>Bölgesel yağ yakımı yoktur.</b> Bacak çalışınca bacaktan yağ gitmez; ama bacak ve kalça en büyük kaslardır, en çok enerjiyi onlar yakar. Bu yüzden haftada 2 alt gün</li>
+    <li><b>Bölgesel yağ yakımı yoktur.</b> Bacak çalışınca bacaktan yağ gitmez; haftada 2 kısa alt gün kası ve gücü korumak için yeterli</li>
     <li>Omuzlar zaten geniş: sırt, yan omuz ve kanat çalışıp beli inceltince V görüntüsü çıkar</li>
     <li>Kardiyonun asıl işi: ağırlık antrenmanını yormadan kalori yakmak ve merdiven nefesini düzeltmek</li></ul></div></details>
   <details><summary>Ağırlık artırma kuralı</summary><div>
